@@ -1,0 +1,88 @@
+// Effect Syntax Guide: https://github.com/cocos-creator/docs-3d/blob/master/zh/material-system/effect-syntax.md
+
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs:vert
+      frag: fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      properties:
+        texture1: { value: white }
+}%
+
+CCProgram vs %{
+  precision highp float;
+
+  #include <cc-global>
+  #include <cc-local>
+
+  in vec3 a_position;
+
+  in vec4 a_color;
+  out vec4 v_color;
+
+  in float a_dist;
+  out float v_dist;
+
+  in float a_line;
+  out float v_line;
+
+  vec4 vert () {
+    vec4 pos = vec4(a_position, 1);
+    pos = cc_matViewProj * cc_matWorld * pos;
+
+    v_color = a_color;
+    v_dist = a_dist;
+    v_line = a_line;
+
+    return pos;
+  }
+}%
+
+CCProgram fs %{
+  #pragma extension([GL_OES_standard_derivatives, __VERSION__ < 300])
+
+  precision highp float;
+  #include <embedded-alpha>
+   #include <builtin/uniforms/cc-global> 
+
+  in vec4 v_color;
+  in float v_dist;
+  in float v_line;
+  uniform sampler2D texture1;
+    uniform CustomMove {
+    vec2 mults;
+};
+
+  vec4 frag () {
+    vec4 o = v_color;
+
+    #if __VERSION__ < 300
+      #ifdef GL_OES_standard_derivatives
+        float aa = fwidth(v_dist);
+      #else
+        float aa = 0.05;
+      #endif
+    #else
+      float aa = fwidth(v_dist);
+    #endif
+    //读取纹理
+    vec2 uv0 = vec2(v_line*mults[0]+cc_time.x*mults[1],(v_dist + 1.)/2.);
+    uv0.x = fract(uv0.x);
+    uv0.y = fract(uv0.y);
+    o *= CCSampleWithAlphaSeparated(texture1,uv0);
+
+    return o;
+  }
+}%
