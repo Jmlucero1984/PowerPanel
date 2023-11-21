@@ -1,4 +1,4 @@
-import { _decorator, Color, Component, EffectAsset, Gradient, Graphics, instantiate, Label, Material, MeshRenderer, Node, RenderTexture, SliderComponent, Sprite, SpriteFrame, SpriteRenderer, Texture2D, UIOpacity, UITransform, v2, v3, v4, Vec2, Vec3, Vec4 } from 'cc';
+import { _decorator, CCBoolean, Color, Component, EffectAsset, Gradient, Graphics, instantiate, Label, Material, MeshRenderer, Node, RenderTexture, SliderComponent, Sprite, SpriteFrame, SpriteRenderer, Texture2D, UIOpacity, UITransform, v2, v3, v4, Vec2, Vec3, Vec4 } from 'cc';
 import { Display } from './Display';
 import { DraggablePanel } from './Panel/DragablePanel';
 import { ConnectorHover } from './Panel/ConnectorHover';
@@ -33,7 +33,7 @@ export default class Cable extends Component {
     public display: Label
 
 
-    @property(Boolean)
+    @property(CCBoolean)
     public PassParamToShader: Boolean = false;
 
     private RTerminal: Node = null;

@@ -38,8 +38,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -554.292,
-      "y": -305.054,
+      "x": -501.818,
+      "y": -230.449,
       "z": 0
     },
     "_lrot": {
@@ -165,7 +165,7 @@
       "b": 255,
       "a": 255
     },
-    "_lineWidth": 1,
+    "_lineWidth": 17,
     "_strokeColor": {
       "__type__": "cc.Color",
       "r": 0,
@@ -205,10 +205,10 @@
     "cp4": {
       "__id__": 44
     },
-    "meshWidth": 30,
+    "meshWidth": 14.1,
     "UV_unit": false,
-    "repeat_Mult": 0,
-    "time_Mult": 10,
+    "repeat_Mult": 2,
+    "time_Mult": 1,
     "_id": ""
   },
   {
@@ -1786,7 +1786,6 @@
       "__id__": 0
     },
     "fileId": "b1Hjjpj5tJapfbLnamDdXQ",
-    "instance": null,
     "targetOverrides": null
   }
 ]

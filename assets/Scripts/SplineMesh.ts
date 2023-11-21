@@ -1,5 +1,5 @@
  
-import { Enum } from 'cc';
+import { CCBoolean, CCInteger, Enum } from 'cc';
 import { Vec2 } from 'cc';
  
 import { v2 } from 'cc';
@@ -23,8 +23,8 @@ export class SplineMesh extends GraphicMesh_v4 {
  
     @property({ type: Enum(TipoForma) })
     TipoForma: TipoForma = TipoForma.BezierCurve;
-    @property({ type: Boolean, visible: function (this) { if (this.TipoForma == TipoForma.BezierCurve ) { return true; } } })
-    _aproximation: boolean = true;
+    @property({ visible: function (this) { if (this.TipoForma == TipoForma.BezierCurve ) { return true; } } })
+    _aproximation = true;
   
  
 
@@ -37,10 +37,10 @@ export class SplineMesh extends GraphicMesh_v4 {
     @property(Node)
     cp4: Node = null;
     @property({ group:"Render" })
-    @property(Number)
+    @property(CCInteger)
     meshWidth:number=30;
     @property({ group:"Render" })
-    @property(Boolean)
+    @property(CCBoolean)
     UV_unit:boolean=false;
     @property({ group:"Render" })
     @property({ slide: true, range: [0, 20], step: 0.1 })
