@@ -1,6 +1,6 @@
 # POWER PANEL
 ## Description
-Plug cables in panels to visualize transfers o whatever you want in Cocos Creator 3.7
+Plug cables in panels to visualize transfers of whatever you want in Cocos Creator 3.7
 
 Using of shaders, vertex and index data.
 
