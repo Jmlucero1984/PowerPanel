@@ -2,7 +2,7 @@
 ## Description
 Plug cables in panels to visualize transfers of whatever you want in Cocos Creator 3.7
 
-Using of shaders, vertex and index data.
+Using of shaders, double spline interpolation, vertex and index data.
 
 *Still in progress*
 
